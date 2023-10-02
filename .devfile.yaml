@@ -30,9 +30,9 @@ commands:
     exec:
       label: '1. Quarkus Dev'
       component: tooling-container
-      commandLine: mvn quarkus:dev
-  # - id: podman-run
-  #   exec:
-  #     label: '2. Podman Run Sample'
-  #     component: tooling-container
-  #     commandLine: podman run --name httpd -d -p 8080:8080 python python -m http.server 8080
+      commandLine: export SDKMAN_DIR="$HOME/.sdkman" && source "$HOME/.sdkman/bin/sdkman-init.sh" && mvn quarkus:dev
+# - id: podman-run
+#   exec:
+#     label: '2. Podman Run Sample'
+#     component: tooling-container
+#     commandLine: podman run --name httpd -d -p 8080:8080 python python -m http.server 8080
