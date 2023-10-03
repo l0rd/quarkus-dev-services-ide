@@ -13,8 +13,6 @@ components:
           value: 'true'
         - name: TESTCONTAINERS_CHECKS_DISABLE
           value: 'true'
-        - name: QUARKUS_DATASOURCE_DEVSERVICES_VOLUMES_  # <-- https://quarkus.io/guides/databases-dev-services#quarkus-datasource-config-group-dev-services-build-time-config_quarkus.datasource.devservices.volumes-volumes
-          value: '/var/lib/postgresql/'
       image: quay.io/devfile/universal-developer-image:latest
       memoryRequest: 2Gi
       memoryLimit: 8Gi
