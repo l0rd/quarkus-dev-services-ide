@@ -24,9 +24,24 @@ components:
           protocol: tcp
           targetPort: 2475      
 commands:
+  - id: test
+    exec:
+      label: '1. Run tests'
+      component: tooling-container
+      commandLine: export SDKMAN_DIR="$HOME/.sdkman" && source "$HOME/.sdkman/bin/sdkman-init.sh" && mvn test
+  - id: logs
+    exec:
+      label: '2. Retrieve logs of testcontainers containers (kubedock)'
+      component: tooling-container
+      commandLine: while [[ ! $(kubectl logs -lkubedock=true) ]]; do echo "waiting..."; sleep 2; done; kubectl logs -lkubedock=true -f
+  - id: pods
+    exec:
+      label: '3. Watch pods'
+      component: tooling-container
+      commandLine: kubectl get pods -w
   - id: run
     exec:
-      label: '1. Quarkus Dev'
+      label: '4. Quarkus Dev'
       component: tooling-container
       commandLine: export SDKMAN_DIR="$HOME/.sdkman" && source "$HOME/.sdkman/bin/sdkman-init.sh" && mvn quarkus:dev
 # - id: podman-run
